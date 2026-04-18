@@ -166,6 +166,10 @@ audio_default_options = [
     # filters
     '--enable-filter=overlay',
     '--enable-filter=equalizer',
+    '--enable-filter=aresample',
+    '--enable-filter=aformat',
+    '--enable-filter=volume',
+    '--enable-filter=anull'
 ]
 
 # https://github.com/media-kit/libmpv-android-video-build/blob/7353af784df9bab3256acd8d90f208024d16ab96/buildscripts/flavors/default.sh
