@@ -139,13 +139,15 @@ func getPlatformAndVariant(usingVtoolFor binaryPath: String, architectures: [Str
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
     let output = String(data: data, encoding: .utf8) ?? ""
 
-    if output.contains("IOSSIMULATOR")
-      || (output.contains("LC_VERSION_MIN_IPHONEOS") && architecture == "x86_64")
-    {
+    if output.contains("IOSSIMULATOR") || output.contains("TVOSSIMULATOR") {
       return ("ios", "simulator")
-    } else if output.contains("LC_VERSION_MIN_IPHONEOS") && architecture == "arm64" {
-      return ("ios", nil)
-    } else if output.contains("LC_VERSION_MIN_MACOSX") || output.contains("MACOS") {
+    }
+    
+    if architecture == "arm64" && !output.contains("MACOS") {
+        return ("ios", nil)
+    }
+
+    if output.contains("LC_VERSION_MIN_MACOSX") || output.contains("MACOS") {
       return ("macos", nil)
     }
   }
