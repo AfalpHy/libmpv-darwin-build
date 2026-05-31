@@ -2,7 +2,7 @@
 # fetching Xcode from the Nix store (requires manual download, see
 # nix/overlays/xcode.nix for instructions).
 # Example: make XCODE_PATH=/Applications/Xcode_16.1.0.app
-XCODE_PATH ?=
+XCODE_PATH ?= /Applications/Xcode.app
 
 # Version string to build. If not set, falls back to .nix/config/version.txt.
 # Example: make VERSION=0.0.1

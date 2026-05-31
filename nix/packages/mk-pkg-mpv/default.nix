@@ -24,7 +24,6 @@ let
   crossFile = callPackage ../../utils/cross-file/default.nix { };
   xctoolchainLipo = callPackage ../../utils/xctoolchain/lipo.nix { };
   ffmpeg = callPackage ../mk-pkg-ffmpeg/default.nix { };
-  uchardet = callPackage ../mk-pkg-uchardet/default.nix { };
   libass = callPackage ../mk-pkg-libass/default.nix { };
 
   nativeBuildInputs = [
@@ -47,9 +46,6 @@ let
 
     cd $src
     patch -p1 <${../../../patches/mpv-fix-missing-objc.patch}
-    if [ "${variant}" == "${variants.audio}" ]; then
-      patch -p1 <${../../../patches/mpv-remove-libass.patch}
-    fi
     cd -
 
     cp -r $src $out
@@ -69,12 +65,7 @@ pkgs.stdenvNoCC.mkDerivation {
   dontUnpack = true;
   enableParallelBuilding = true;
   inherit nativeBuildInputs;
-  buildInputs =
-    [ ffmpeg ]
-    ++ pkgs.lib.optionals (variant == "video") [
-      uchardet
-      libass
-    ];
+  buildInputs = [ ffmpeg libass ];
   configurePhase = ''
     DISABLE_ALL_OPTIONS=(
       `# booleans`
@@ -99,8 +90,6 @@ pkgs.stdenvNoCC.mkDerivation {
       -Dlua=disabled `# Lua`
       -Dpthread-debug=disabled `# pthread runtime debugging wrappers`
       -Drubberband=disabled `# librubberband support`
-      -Dsdl2=disabled `# SDL2`
-      -Dsdl2-gamepad=disabled `# SDL2 gamepad input`
       -Dstdatomic=disabled `# C11 stdatomic.h`
       -Duchardet=disabled `# uchardet support`
       -Duwp=disabled `# Universal Windows Platform`
@@ -123,57 +112,6 @@ pkgs.stdenvNoCC.mkDerivation {
       -Dsdl2-audio=disabled `# SDL2 audio output`
       -Dsndio=disabled `# sndio audio output`
       -Dwasapi=disabled `# WASAPI audio output`
-
-      `# video output features`
-      -Dcaca=disabled `# CACA`
-      -Dcocoa=disabled `# Cocoa`
-      -Dd3d11=disabled `# Direct3D 11 video output`
-      -Ddirect3d=disabled `# Direct3D support`
-      -Ddrm=disabled `# DRM`
-      -Degl=disabled `# EGL 1.4`
-      -Degl-android=disabled `# Android EGL support`
-      -Degl-angle=disabled `# OpenGL ANGLE headers`
-      -Degl-angle-lib=disabled `# OpenGL Win32 ANGLE library`
-      -Degl-angle-win32=disabled `# OpenGL Win32 ANGLE Backend`
-      -Degl-drm=disabled `# OpenGL DRM EGL Backend`
-      -Degl-wayland=disabled `# OpenGL Wayland Backend`
-      -Degl-x11=disabled `# OpenGL X11 EGL Backend`
-      -Dgbm=disabled `# GBM`
-      -Dgl=disabled `# OpenGL context support`
-      -Dgl-cocoa=disabled `# gl-cocoa`
-      -Dgl-dxinterop=disabled `# OpenGL/DirectX Interop Backend`
-      -Dgl-win32=disabled `# OpenGL Win32 Backend`
-      -Dgl-x11=disabled `# OpenGL X11/GLX (deprecated/legacy)`
-      -Djpeg=disabled `# JPEG support`
-      -Dlibplacebo=disabled `# libplacebo support`
-      -Drpi=disabled `# Raspberry Pi support`
-      -Dsdl2-video=disabled `# SDL2 video output`
-      -Dshaderc=disabled `# libshaderc SPIR-V compiler`
-      -Dsixel=disabled `# Sixel`
-      -Dspirv-cross=disabled `# SPIRV-Cross SPIR-V shader converter`
-      -Dplain-gl=disabled `# OpenGL without platform-specific code (e.g. for libmpv)`
-      -Dvdpau=disabled `# VDPAU acceleration`
-      -Dvdpau-gl-x11=disabled `# VDPAU with OpenGl/X11`
-      -Dvaapi=disabled `# VAAPI acceleration`
-      -Dvaapi-drm=disabled `# VAAPI (DRM/EGL support)`
-      -Dvaapi-wayland=disabled `# VAAPI (Wayland support)`
-      -Dvaapi-x11=disabled `# VAAPI (X11 support)`
-      -Dvaapi-x-egl=disabled `# VAAPI EGL on X11`
-      -Dvulkan=disabled `# Vulkan context support`
-      -Dwayland=disabled `# Wayland`
-      -Dx11=disabled `# X11`
-      -Dxv=disabled `# Xv video output`
-
-      `# hwaccel features`
-      -Dandroid-media-ndk=disabled `# Android Media APIs`
-      -Dcuda-hwaccel=disabled `# CUDA acceleration`
-      -Dcuda-interop=disabled `# CUDA with graphics interop`
-      -Dd3d-hwaccel=disabled `# D3D11VA hwaccel`
-      -Dd3d9-hwaccel=disabled `# DXVA2 hwaccel`
-      -Dgl-dxinterop-d3d9=disabled `# OpenGL/DirectX Interop Backend DXVA2 interop`
-      -Dios-gl=disabled `# iOS OpenGL ES hardware decoding interop support`
-      -Drpi-mmal=disabled `# Raspberry Pi MMAL hwaccel`
-      -Dvideotoolbox-gl=disabled `# Videotoolbox with OpenGL`
 
       `# macOS features`
       -Dmacos-10-11-features=disabled `# macOS 10.11 SDK Features`
@@ -200,30 +138,9 @@ pkgs.stdenvNoCC.mkDerivation {
       -Diconv=enabled `# iconv`
     )
 
-    COMMON_VIDEO_OPTIONS=(
-      `# misc features`
-      -Duchardet=enabled `# uchardet support`
-      -Dzlib=enabled `# zlib`
-
-      `# video output features`
-      -Dgl=enabled `# OpenGL context support`
-      -Dplain-gl=enabled `# OpenGL without platform-specific code (e.g. for libmpv)`
-    )
-
     MACOS_OPTIONS=(
       `# audio output features`
       -Dcoreaudio=enabled `# CoreAudio audio output`
-
-      `# video output features`
-      -Dcocoa=enabled `# Cocoa` `# BUG: required in audio mode since v0.36.0`
-    )
-
-    MACOS_VIDEO_OPTIONS=(
-      `# video output features`
-      -Dgl-cocoa=enabled `# gl-cocoa`
-
-      `# hwaccel features`
-      -Dvideotoolbox-gl=enabled `# Videotoolbox with OpenGL`
     )
 
     IOS_OPTIONS=(
@@ -231,28 +148,14 @@ pkgs.stdenvNoCC.mkDerivation {
       -Daudiounit=enabled `# AudioUnit output for iOS`
     )
 
-    IOS_VIDEO_OPTIONS=(
-      `# hwaccel features`
-      -Dios-gl=enabled `# iOS OpenGL ES hardware decoding interop support`
-    )
-
     OPTIONS=("''${DISABLE_ALL_OPTIONS[@]}")
 
     OPTIONS+=("''${COMMON_OPTIONS[@]}")
-    if [ "${variant}" == "${variants.video}" ]; then
-      OPTIONS+=("''${COMMON_VIDEO_OPTIONS[@]}")
-    fi
 
     if [ "${os}" == "${oses.macos}" ]; then
       OPTIONS+=("''${MACOS_OPTIONS[@]}")
-      if [ "${variant}" == "${variants.video}" ]; then
-        OPTIONS+=("''${MACOS_VIDEO_OPTIONS[@]}")
-      fi
     elif [ "${os}" == "${oses.ios}" ]; then
       OPTIONS+=("''${IOS_OPTIONS[@]}")
-      if [ "${variant}" == "${variants.video}" ]; then
-        OPTIONS+=("''${IOS_VIDEO_OPTIONS[@]}")
-      fi
     fi
 
     meson setup build $src \

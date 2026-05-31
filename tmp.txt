@@ -1,0 +1,145 @@
+Running phase: patchPhase
+@nix { "action": "setPhase", "phase": "patchPhase" }
+Running phase: configurePhase
+@nix { "action": "setPhase", "phase": "configurePhase" }
+The Meson build system
+Version: 1.6.0
+Source dir: /nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0
+Build dir: /nix/var/nix/builds/nix-72772-3944451928/build
+Build type: cross build
+Project name: mpv
+Project version: 0.36.0
+C compiler for the host machine: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang (clang 17.0.0 "Apple clang version 17.0.0 (clang-1700.6.3.2)")
+C linker for the host machine: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang ld64 1230.1
+C compiler for the build machine: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang (clang 17.0.0 "Apple clang version 17.0.0 (clang-1700.6.3.2)")
+C linker for the build machine: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang ld64 1230.1
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: x86_64
+Host machine cpu: amd64
+Target machine cpu family: x86_64
+Target machine cpu: amd64
+Program python3 found: YES (/nix/store/c0zcl6sav8305n3pb1crk2ysrlfk9ppk-python3-3.12.7/bin/python3)
+Found pkg-config: YES (/nix/store/d6facgfz0viwyd8r0z2iwmzqvcj4v2fp-pkg-config-wrapper-0.29.2/bin/pkg-config) 0.29.2
+Run-time dependency libavcodec found: YES 60.3.100
+Run-time dependency libavfilter found: YES 9.3.100
+Run-time dependency libavformat found: YES 60.3.100
+Run-time dependency libavutil found: YES 58.2.100
+Run-time dependency libswresample found: YES 4.10.100
+Run-time dependency libswscale found: YES 7.1.100
+Run-time dependency libass found: YES 0.17.1
+Run-time dependency threads found: YES
+Compiler for C supports arguments -Werror=implicit-function-declaration: YES 
+Compiler for C supports arguments -Wno-error=deprecated-declarations: YES 
+Compiler for C supports arguments -Wno-error=unused-function: YES 
+Compiler for C supports arguments -Wempty-body: YES 
+Compiler for C supports arguments -Wdisabled-optimization: YES 
+Compiler for C supports arguments -Wstrict-prototypes: YES 
+Compiler for C supports arguments -Wno-format-zero-length: YES 
+Compiler for C supports arguments -Wno-redundant-decls: YES 
+Compiler for C supports arguments -Wvla: YES 
+Compiler for C supports arguments -Wno-format-truncation: YES 
+Compiler for C supports arguments -Wimplicit-fallthrough: YES 
+Compiler for C supports arguments -fno-math-errno: YES 
+Compiler for C supports arguments -Wformat -Werror=format-security: YES 
+Compiler for C supports link arguments -Wl,-z,noexecstack: NO 
+Compiler for C supports link arguments -Wl,--nxcompat,--no-seh,--dynamicbase: NO 
+Run-time dependency dl found: YES
+Compiler for C supports link arguments -rdynamic: YES 
+Run-time dependency appleframeworks found: YES (Cocoa, IOKit, QuartzCore)
+Library windowsapp skipped: feature uwp disabled
+Checking for function "glob" : YES 
+Header "sys/vt.h" has symbol "VT_GETMODE" : NO 
+Header "sys/consio.h" has symbol "VT_GETMODE" : NO 
+Checking for function "fstatfs" : YES 
+Checking for function "fstatfs" : NO 
+Checking if "vector check" compiles: YES 
+Program /nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/TOOLS/docutils-wrapper.py found: YES (/nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/TOOLS/docutils-wrapper.py)
+Program /nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/TOOLS/file2string.py found: YES (/nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/TOOLS/file2string.py)
+Program /nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/TOOLS/matroska.py found: YES (/nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/TOOLS/matroska.py)
+Program /nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/version.py found: YES (/nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/version.py)
+Dependency libcdio_paranoia skipped: feature cdda disabled
+Dependency dvdnav skipped: feature dvdnav disabled
+Dependency dvdread skipped: feature dvdnav disabled
+Run-time dependency iconv found: YES
+Dependency mujs skipped: feature javascript disabled
+Dependency lcms2 skipped: feature lcms2 disabled
+Dependency libarchive skipped: feature libarchive disabled
+Dependency libavdevice skipped: feature libavdevice disabled
+Dependency libbluray skipped: feature libbluray disabled
+Library m found: YES
+Library rt found: NO
+Dependency rubberband skipped: feature rubberband disabled
+Dependency sdl2 skipped: feature sdl2 disabled
+Library atomic found: NO
+Header "stdatomic.h" has symbol "atomic_int" skipped: feature stdatomic disabled
+Dependency uchardet skipped: feature uchardet disabled
+Dependency vapoursynth skipped: feature vapoursynth disabled
+Dependency vapoursynth-script skipped: feature vapoursynth disabled
+Dependency zimg skipped: feature zimg disabled
+Dependency zlib skipped: feature zlib disabled
+Dependency alsa skipped: feature alsa disabled
+Dependency appleframeworks (modules: Foundation, AudioToolbox) skipped: feature audiounit disabled
+Header "AudioToolbox/AudioToolbox.h" has symbol "kAudioUnitSubType_RemoteIO" skipped: feature audiounit disabled
+Run-time dependency appleframeworks found: YES (CoreFoundation, CoreAudio, AudioUnit, AudioToolbox)
+Dependency jack skipped: feature jack disabled
+Dependency openal skipped: feature openal disabled
+Library OpenSLES skipped: feature opensles disabled
+Header "sys/soundcard.h" has symbol "SNDCTL_DSP_SETPLAYVOL" skipped: feature oss-audio disabled
+Dependency libpipewire-0.3 skipped: feature pipewire disabled
+Dependency libpulse skipped: feature pulse disabled
+Dependency sndio skipped: feature sndio disabled
+Header "audioclient.h" has symbol "IAudioClient" skipped: feature wasapi disabled
+Dependency caca skipped: feature caca disabled
+Has header "d3d9.h" skipped: feature direct3d disabled
+Dependency libdrm skipped: feature drm disabled
+Dependency gbm skipped: feature gbm disabled
+Dependency libjpeg skipped: feature jpeg disabled
+Dependency libplacebo skipped: feature libplacebo disabled
+Dependency shaderc skipped: feature shaderc disabled
+Dependency libsixel skipped: feature sixel disabled
+Checking for function "shm_open" : YES 
+Dependency spirv-cross-c-shared skipped: feature spirv-cross disabled
+Dependency wayland-client skipped: feature wayland disabled
+Dependency wayland-cursor skipped: feature wayland disabled
+Dependency wayland-protocols skipped: feature wayland disabled
+Dependency xkbcommon skipped: feature wayland disabled
+Has header "linux/input-event-codes.h" skipped: feature wayland disabled
+Program wayland-scanner skipped: feature wayland disabled
+Dependency x11 skipped: feature x11 disabled
+Dependency xscrnsaver skipped: feature x11 disabled
+Dependency xext skipped: feature x11 disabled
+Dependency xinerama skipped: feature x11 disabled
+Dependency xpresent skipped: feature x11 disabled
+Dependency xrandr skipped: feature x11 disabled
+Dependency xv skipped: feature xv disabled
+Dependency appleframeworks (modules: OpenGL) skipped: feature gl-cocoa disabled
+Library EGL skipped: feature egl-angle-lib disabled
+Dependency egl skipped: feature egl disabled
+Library EGL skipped: feature egl-android disabled
+Dependency wayland-egl skipped: feature egl-wayland disabled
+Dependency /opt/vc/lib/pkgconfig/brcmegl.pc skipped: feature rpi disabled
+Dependency vulkan skipped: feature vulkan disabled
+Checking for function "vkCreateDisplayPlaneSurfaceKHR" with dependency vulkan: NO 
+Found CMake: NO
+Run-time dependency ffnvcodec found: NO (tried pkgconfig, framework and cmake)
+Header "OpenGLES/ES3/glext.h" has symbol "GL_RGB32F" skipped: feature ios-gl disabled
+Dependency /opt/vc/lib/pkgconfig/mmal.pc skipped: feature rpi-mmal disabled
+Dependency libva skipped: feature vaapi disabled
+Dependency libva-drm skipped: feature vaapi-drm disabled
+Dependency libva-wayland skipped: feature vaapi-wayland disabled
+Dependency libva-x11 skipped: feature vaapi-x11 disabled
+Dependency vdpau skipped: feature vdpau disabled
+Program /nix/store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/TOOLS/macos-sdk-version.py skipped: feature swift-build disabled
+Program xcrun skipped: feature swift-build disabled
+Has header "AppKit/NSTouchBar.h" : YES 
+Program rst2man rst2man.py skipped: feature manpage-build disabled
+Program rst2html rst2html.py skipped: feature html-build disabled
+Program rst2pdf skipped: feature pdf-build disabled
+Configuring config.h using configuration
+Message: List of enabled features: av-channel-layout avif_muxer bsd-fstatfs build-date cocoa coreaudio darwin debug ffmpeg glob glob-posix iconv jpegxl libass libdl libm osx-thread-name posix posix_shm threads
+Fetching value of define "MPV_CLIENT_API_VERSION" : (((2) << 16) | (1) | 0UL) 
+
+../../../../store/jldlj1d9racv8gsjjnn743yrwy6cm5jv-mk-pkg-mpv-fixed-source-audio-0.36.0/meson.build:1716:9: ERROR: No host machine compiler for 'osdep/macosx_application.m'
+
+A full log can be found at /nix/var/nix/builds/nix-72772-3944451928/build/meson-logs/meson-log.txt

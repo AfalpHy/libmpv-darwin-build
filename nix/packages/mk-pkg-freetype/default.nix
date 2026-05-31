@@ -14,7 +14,6 @@ let
   crossFile = callPackage ../../utils/cross-file/default.nix { };
   xctoolchainLipo = callPackage ../../utils/xctoolchain/lipo.nix { };
   harfbuzz = callPackage ../mk-pkg-harfbuzz/default.nix { };
-  libpng = callPackage ../mk-pkg-libpng/default.nix { };
 
   pname = import ../../utils/name/package.nix name;
   src = callPackage ../../utils/fetch-tarball/default.nix {
@@ -39,7 +38,6 @@ pkgs.stdenvNoCC.mkDerivation {
   ];
   buildInputs = [
     harfbuzz
-    libpng
   ];
   configurePhase = ''
     meson setup build $src \
@@ -50,7 +48,7 @@ pkgs.stdenvNoCC.mkDerivation {
       -Dbzip2=disabled \
       -Dharfbuzz=enabled \
       -Dmmap=disabled \
-      -Dpng=enabled \
+      -Dpng=disabled \
       -Dtests=disabled \
       -Dzlib=enabled
   '';
