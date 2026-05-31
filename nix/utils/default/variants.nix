@@ -3,5 +3,4 @@ let
 in
 [
   variants.audio
-  variants.video
 ]

@@ -6,7 +6,7 @@ XCODE_PATH ?= /Applications/Xcode.app
 
 # Version string to build. If not set, falls back to .nix/config/version.txt.
 # Example: make VERSION=0.0.1
-VERSION ?=
+VERSION ?= v0.36.0
 
 # Flake output attribute to build. If not set, the default package is built.
 # Example: make TARGET=mk-out-archive-libs-macos-universal-video-default
