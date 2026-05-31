@@ -194,6 +194,9 @@ pkgs.stdenvNoCC.mkDerivation {
     MACOS_OPTIONS=(
       `# audio output features`
       -Dcoreaudio=enabled `# CoreAudio audio output`
+
+      `# video output features`
+      -Dcocoa=enabled `# Cocoa` `# BUG: required in audio mode since v0.36.0`
     )
 
     IOS_OPTIONS=(
