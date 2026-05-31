@@ -1,8 +1,8 @@
 {
   ffmpeg = {
-    version = "6.0";
-    url = "https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz";
-    sha256 = "57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082";
+    version = "8.1";
+    url = "https://ffmpeg.org/releases/ffmpeg-8.1.tar.gz";
+    sha256 = "b13510e7a6a4ca28fa04307f2be54ef5a31e168eb2bbe055a7f4e4d2cadd51b1";
   };
   freetype = {
     version = "2.13.2";
@@ -35,8 +35,8 @@
     sha256 = "0e982409a9c3fc82ee06e08205b1355e5c6aa4c36bca58146ef399621b0ce5ab";
   };
   mpv = {
-    version = "0.36.0";
-    url = "https://github.com/mpv-player/mpv/archive/refs/tags/v0.36.0.tar.gz";
-    sha256 = "29abc44f8ebee013bb2f9fe14d80b30db19b534c679056e4851ceadf5a5e8bf6";
+    version = "0.41.0";
+    url = "https://github.com/mpv-player/mpv/archive/refs/tags/v0.41.0.tar.gz";
+    sha256 = "ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209";
   };
 }
