@@ -26,6 +26,10 @@
         packages = with pkgs; [
           tree
           gnumake
+          # real git so the Makefile trap works: /usr/bin/git is an Apple shim
+          # that resolves through xcrun, which hits the broken xcbuild xcrun
+          # shim that the environment puts earlier on PATH
+          git
         ];
       };
       perSystem =

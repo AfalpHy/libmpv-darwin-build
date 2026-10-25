@@ -6,11 +6,16 @@ XCODE_PATH ?= /Applications/Xcode.app
 
 # Version string to build. If not set, falls back to .nix/config/version.txt.
 # Example: make VERSION=0.0.1
-VERSION ?= v0.36.0
+VERSION ?= v0.41.0
 
 # Flake output attribute to build. If not set, the default package is built.
 # Example: make TARGET=mk-out-archive-libs-macos-universal-video-default
 TARGET ?=
+
+# The nix sandbox (used on CI with a multi-user Nix installation) requires the
+# nix daemon. In single-user (daemon-less) installations sandboxed builds
+# cannot fetch over https (TLS fails inside sandbox-exec), so disable it.
+SANDBOX := $(shell [ -S /nix/var/nix/daemon-socket/socket ] && echo true || echo false)
 
 all: build
 
@@ -23,7 +28,7 @@ build:
 	$(if $(XCODE_PATH),echo '$(XCODE_PATH)' > .nix/config/xcode.path;,) \
 	$(if $(VERSION),echo '$(VERSION)' > .nix/config/version.txt;,) \
 	nix build -v -L \
-		--option sandbox true \
+		--option sandbox $(SANDBOX) \
 		--option sandbox-fallback false \
 		$(if $(XCODE_PATH),--option extra-sandbox-paths $(XCODE_PATH),) \
 		$(if $(TARGET),.#$(TARGET),)

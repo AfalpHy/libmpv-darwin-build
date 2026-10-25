@@ -23,10 +23,6 @@ let
     export src=$PWD/src
     chmod -R 777 $src
 
-    cd $src
-    patch -p1 <${../../../patches/ltmain-target-passthrough.patch}
-    cd -
-
     cp ${./meson.build} $src/meson.build
 
     cp -r $src $out

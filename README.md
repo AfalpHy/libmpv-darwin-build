@@ -323,8 +323,8 @@ Inclusion:
     <tr>
       <td rowspan="2"><strong>macOS</strong></td>
       <td>amd64</td>
-      <td rowspan="2"><code>10.9</code></td>
-      <td rowspan="2">Required by <code>uchardet</code></td>
+      <td rowspan="2"><code>13.0</code></td>
+      <td rowspan="2">Required by <code>mpv</code> (Swift)</td>
     </tr>
     <tr>
       <td>arm64</td>
@@ -332,14 +332,14 @@ Inclusion:
     <tr>
       <td><strong>iOS</strong></td>
       <td>arm64</td>
-      <td><code>9.0</code></td>
-      <td>Required by <code>ffmpeg</code></td>
+      <td><code>14.0</code></td>
+      <td>Required by <code>mpv</code></td>
     </tr>
     <tr>
       <td rowspan="2"><strong>iOS Simulator</strong></td>
       <td>amd64</td>
-      <td><code>9.0</code></td>
-      <td>Required by <code>ffmpeg</code></td>
+      <td><code>14.0</code></td>
+      <td>Required by <code>mpv</code></td>
     </tr>
     <tr>
       <td>arm64</td>
@@ -420,9 +420,13 @@ flowchart LR
 - [**fftools-ffi**](https://github.com/moffatman/fftools-ffi): FFmpeg's
   command-line interface exposed as a shared library for FFI usage
 
+- [**libplacebo**](https://github.com/haasn/libplacebo): A library for
+  processing video frames with shaders, required by <code>mpv</code> since
+  v0.38.0 (colorspace handling)
+
 - [**libass**](https://github.com/libass/libass): A library for rendering
   subtitles in videos, with support for advanced text formatting and positioning
-  features (made optional with a patch)
+  features
 
 - [**fribidi**](https://github.com/fribidi/fribidi): A library for handling
   bidirectional text (such as Arabic or Hebrew) in Unicode strings, with support
@@ -520,17 +524,6 @@ flowchart LR
 
 - We use `meson` as much as possible in order to simplify cross-compilation, at
   the cost of some heaviness regarding legacy packages
-
-## How the libass optional patch was created
-
-As the dependency of mpv on libass is deeply embedded in the code, the simplest
-solution was to:
-
-1. Remove the dynamic linking in `meson.build`.
-2. Include the `ass/ass.h` and `ass/ass_types.h` headers directly in the code
-3. Remove the call to `ass_library_version` in `player/command.c`
-4. Remove the calls to `ass_library_init`, called by `mp_ass_init`, in
-   `sub/osd_libass.c` and `sub/sd_ass.c`
 
 ## Resources
 

@@ -24,10 +24,6 @@ let
     export src=$PWD/src
     chmod -R 777 $src
 
-    cd $src
-    patch -p1 <${../../../patches/ltmain-target-passthrough.patch}
-    cd -
-
     # Fix building on modern macOS
     sed -i 's/\-force_cpusubtype_ALL//g' $src/configure
 
